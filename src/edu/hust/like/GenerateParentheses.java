@@ -31,7 +31,7 @@ public class GenerateParentheses {
         for (String str : generateParenthesis1(n - 1)) {
             //对前面的所有可能的组合进行插入，会有重复，因此用set来去掉重复
             for (int i = 0; i < str.length(); i++) {
-                res.add(str.substring(0, i) + "()" + str.substring(i));
+                res.add(str.substring(0, i) + "[]" + str.substring(i));
             }
         }
         return new ArrayList<>(res);
