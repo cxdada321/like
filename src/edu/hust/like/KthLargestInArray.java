@@ -62,7 +62,7 @@ public class KthLargestInArray {
         //需要调整
         if (largest != i) {
             swap(nums, i, largest);
-            //递归调整，对于新的子节点继续调整
+            //递归调整，对于新的子节点继续调整(根据变化了的字节点的坐标)
             maxHeapify(nums, largest, heapSize);
         }
     }
