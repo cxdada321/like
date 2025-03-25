@@ -1,5 +1,7 @@
 package edu.hust.like;
 
+import java.util.Stack;
+
 /**
  * 翻转链表
  */
@@ -20,10 +22,35 @@ public class RotateLinks {
         node3.next = node4;
         //ListNode result = reverseIteration(head);
         ListNode result = reverseRecursion(head);
+        //采用栈解决
+//        ListNode result = reverseStack(head);
         while (result != null) {
             System.out.println(result.val);
             result = result.next;
         }
+    }
+
+    private static ListNode reverseStack(ListNode head) {
+        // write your code here.
+        if (head == null) {
+            return null;
+        }
+        Stack<ListNode> stack = new Stack<>();
+
+        while (head != null) {
+            ListNode temp = head;
+            head = head.next;
+            temp.next = null;
+            stack.push(temp);
+        }
+
+        ListNode root = stack.pop();
+        ListNode res = root;
+        while (!stack.isEmpty()) {
+            root.next = stack.pop();
+            root = root.next;
+        }
+        return res;
     }
 
     private static ListNode reverseRecursion(ListNode head) {

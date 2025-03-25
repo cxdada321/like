@@ -1,10 +1,10 @@
-package 美团;
+package exam.meituan;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class 小美的数组删除 {
+public class DeleteArray {
     /**
      * 小美有一个长度为n 的数组ai，他可以对数组进行如下操作：
      * ● 删除第一个元素，同时数组的长度减一，花费为x

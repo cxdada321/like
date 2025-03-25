@@ -1,4 +1,4 @@
-package 美团;
+package exam.meituan;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * 小美减彩带
  */
-public class 小美减彩带 {
+public class JianCaiDai {
     public static void main(String[] args) {
         /**
          * 小美的彩带是由一条长度为n 的彩带一直无限循环得到的，彩带的每一个位置都有一个颜色，用ai表示。因此当

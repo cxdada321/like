@@ -24,6 +24,7 @@ public class PalindromePartitioning {
         res.forEach(System.out::println);
     }
 
+    //就不需要预处理
     //这里的处理就是递归调用了，就像是把一个大问题不断往里深入判断，并且内部判断的结果如果出错了，就整个都出问题，并且每次判断完后，要把当前的结果保存下来，然后继续往下判断
     //这里就不是完全用动态规划确定状态了，而是需要确定哪个状态再递归进去，相当于旧的值不是求出来了再求新的值，这样就不需要保证循环条件了
     private static List<List<String>> partition2(String s) {
@@ -74,7 +75,7 @@ public class PalindromePartitioning {
     //结合记忆化搜索，就在加入的过程中再找合适的字符串，并且记录下来，这样就不用重复找了
 
     //用动态规划查找回文数的循环条件核心是，计算新的值要用前面的值，因此前面的值应该要先算，循环条件根据前面的值的位置来确定
-    //当作一个二维数组来看，就j>=i的是空或者一个字母，肯定是不用管的，因此矩阵其实只有上三角需要计算
+    //当作一个二维数组来看，就i>=j的是空或者一个字母，肯定是不用管的，因此矩阵其实只有右上三角需要计算
     //如果i从最上面开始，新的值的老值在右下角还没计算，就出现的得不到新值的问题，所以要从下面开始
     //i从左边开始的话就会出现很多重复计算，因为下三角是不用管的，因此考虑i从最下面最右边开始
 
@@ -82,14 +83,14 @@ public class PalindromePartitioning {
     private static List<List<String>> partition1(String s) {
         n = s.length();
         f = new int[n][n];
-        //赋初值，处理i<=j的情况，即空字符串或者一个字符的情况
+        //赋初值，处理j<=i的情况，即空字符串或者一个字符的情况
         for (int i = 0; i < f.length; i++) {
             Arrays.fill(f[i], 1);
         }
         for (int i = n; i >= 0; i--) {
             for (int j = i + 1; j < n; j++) {
                 //判断是否是回文串
-                f[i][j] = s.charAt(i) == s.charAt(j) && f[i + 1][j - 1] ==1 ? 1 : 0;
+                f[i][j] = s.charAt(i) == s.charAt(j) && f[i + 1][j - 1] == 1 ? 1 : 0;
             }
         }
         dfs(s, 0);

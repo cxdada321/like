@@ -38,10 +38,10 @@ public class EditDistance {
         //因为是将word1换word2，所以需要操作的是word1，因此竖轴是word2，横轴是word1，即不断遍历word1来满足word2
         int[][] dp = new int[n + 1][m + 1];
         //对dp边界初始化
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n + 1; i++) {
             dp[i][0] = i;
         }
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m + 1; i++) {
             dp[0][i] = i;
         }
         for (int i = 0; i < n; i++) {

@@ -1,4 +1,4 @@
-package edu.hust.like.anty;
+package exam.anty;
 
 import java.util.HashSet;
 import java.util.Set;
