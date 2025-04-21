@@ -26,7 +26,9 @@ public class MergeTwoSortedLists {
                 list2 = list2.next;
             }
         }
-        return res;
+        //list1和list2如果存在一个还没有合并完，就直接合并即可
+        temp.next = list1 == null ? list2 == null ? null : list2 : list1;
+        return res.next;
     }
 
     public static class ListNode {

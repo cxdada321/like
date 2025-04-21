@@ -41,10 +41,11 @@ public class ReverseNodesinkGroup {
         while (++count < k && tail != null && tail.next != null) {
             tail = tail.next;
         }
-        //如果节点数量等于一批次的结果，即交换
+
         if (count < k) {
             return head;
         }
+        //如果节点数量等于一批次的结果，即交换
         ListNode next = tail.next;
         //交换k个节点，原本的head节点是头部现在是尾部，原本的tail是尾部现在是头部节点
         reserve(head, k);

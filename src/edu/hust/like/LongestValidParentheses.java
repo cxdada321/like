@@ -8,7 +8,7 @@ import java.util.LinkedList;
  */
 public class LongestValidParentheses {
     public static void main(String[] args) {
-        String s = "()(()()";
+        String s = "))()((()())()";
         //左右遍历的方式
 //        int res = longestValidParentheses(s);
         //动态规划的方式
@@ -18,16 +18,28 @@ public class LongestValidParentheses {
         System.out.println(res);
     }
 
+    //栈里维护的是'('的索引，栈底是最后没有被匹配的的')'索引
+    //每次计算一个位置以该位置结尾的最长有效长度的时候，先弹出栈里的元素，然后用剩余栈顶索引和该位置计算长度
+    //这样就可以避免相邻元素，计算出来长度始终为2
+    //如果最开始就是'('，那出栈后栈里就没有元素了，因此开始的时候需要给栈底加入一个元素，符合栈里栈底元素最后没有被匹配的的')'索引
     private static int longestValidParentheses2(String s) {
         int res = 0;
         Deque<Integer> stack = new LinkedList<>();
+        stack.push(-1);
+
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 stack.push(i);
             } else {
-                if ()
+                stack.pop();
+                if (!stack.isEmpty()) {
+                    res = Math.max(res, i - stack.peek());
+                } else {
+                    stack.push(i);
+                }
             }
         }
+        return res;
     }
 
     //dp[i]表示以i索引结尾的最长有效括号的长度，因此只能是')'，不可能是'('结尾
